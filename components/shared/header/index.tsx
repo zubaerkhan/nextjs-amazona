@@ -9,13 +9,13 @@ import Search from './search'
 
 export default function Header() {
   return (
-    <header className='bg-black  text-white'>
+    <header className='bg-black  text-white h-'>
       <div className='px-2'>
         <div className='flex items-center justify-between'>
           <div className='flex items-center'>
             <Link
               href='/'
-              className='flex items-center header-button font-extrabold text-2xl m-1 '
+              className='flex items-center header-button font-extrabold text-2xl m-1'
             >
               <Image
                 src='/icons/logo.svg'
