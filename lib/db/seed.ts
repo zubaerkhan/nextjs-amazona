@@ -1,4 +1,3 @@
-
 import Product from './models/product.model'
 import { cwd } from 'process'
 import { loadEnvConfig } from '@next/env'
@@ -9,7 +8,7 @@ loadEnvConfig(cwd())
 
 const main = async () => {
   try {
-    const { products } = data;
+    const { products } = data
     await connectToDatabase(process.env.MONGODB_URI)
 
     await Product.deleteMany()
