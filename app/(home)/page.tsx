@@ -1,6 +1,10 @@
 import { HomeCard } from '@/components/shared/home/home-card'
 import { HomeCarousel } from '@/components/shared/home/home-carousel'
-import { getAllCategories, getProductsByTag, getProductsForCard } from '@/lib/actions/product.actions'
+import {
+  getAllCategories,
+  getProductsByTag,
+  getProductsForCard,
+} from '@/lib/actions/product.actions'
 import { Card, CardContent } from '@/components/ui/card'
 import data from '@/lib/data'
 import { toSlug } from '@/lib/utils'
@@ -63,7 +67,7 @@ export default async function HomePage() {
   const bestSellingProducts = await getProductsByTag({ tag: 'best-seller' })
   return (
     <>
-     <HomeCarousel items={data.carousels} />
+      <HomeCarousel items={data.carousels} />
       <div className='md:p-4 md:space-y-4 bg-border'>
         <HomeCard cards={cards} />
         <Card className='w-full rounded-none'>
@@ -71,12 +75,12 @@ export default async function HomePage() {
             <ProductSlider title={"Today's Deals"} products={todaysDeals} />
           </CardContent>
           <CardContent className='p-4 items-center gap-3'>
-         <ProductSlider
-           title='Best Selling Products'
-           products={bestSellingProducts}
-           hideDetails
-         />
-       </CardContent>
+            <ProductSlider
+              title='Best Selling Products'
+              products={bestSellingProducts}
+              hideDetails
+            />
+          </CardContent>
         </Card>
       </div>
     </>
