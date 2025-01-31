@@ -6,14 +6,16 @@ import Image from 'next/image'
    import { IProduct } from '@/lib/db/models/product.model'
 
    import Rating from './rating'
-   import { formatNumber } from '@/lib/utils'
+   import { formatNumber, generateId, round2 } from '@/lib/utils'
    import ProductPrice from './product-price'
 import ImageHover from './image-hover'
+import AddToCart from './add-to-cart'
 
    const ProductCard = ({
      product,
      hideBorder = false,
      hideDetails = false,
+     hideAddToCart = false
    }: {
      product: IProduct
      hideDetails?: boolean
@@ -70,6 +72,26 @@ import ImageHover from './image-hover'
          />
        </div>
      )
+     const AddButton = () => (
+      <div className='w-full text-center'>
+        <AddToCart
+          minimal
+          item={{
+            clientId: generateId(),
+            product: product._id,
+            size: product.sizes[0],
+            color: product.colors[0],
+            countInStock: product.countInStock,
+            name: product.name,
+            slug: product.slug,
+            category: product.category,
+            price: round2(product.price),
+            quantity: 1,
+            image: product.images[0],
+          }}
+        />
+      </div>
+    )
 
      return hideBorder ? (
        <div className='flex flex-col'>
@@ -92,6 +114,7 @@ import ImageHover from './image-hover'
              <CardContent className='p-3 flex-1  text-center'>
                <ProductDetails />
              </CardContent>
+             {!hideAddToCart && <AddButton />}
            </>
          )}
        </Card>
